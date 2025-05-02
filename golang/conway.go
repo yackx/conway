@@ -54,7 +54,7 @@ func Next(grid *CellSet) *CellSet {
 		}
 	}
 
-	// New borns (starting from all living cells neighbours)
+	// Newborns (starting from all living cells neighbours)
 	for _, candidate := range livingCellsNeighbours.Cells() {
 		found := false
 		for _, cell := range grid.Cells() {
