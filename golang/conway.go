@@ -24,13 +24,7 @@ func neighbours(cell *Cell) *CellSet {
 
 // Count the living amongst the given neighbours, for the given cell.
 func countLivingNeighbours(neighbours, grid *CellSet) int {
-	intersect := 0
-	for _, neighbour := range neighbours.Cells() {
-		if grid.Contains(neighbour) {
-			intersect++
-		}
-	}
-	return intersect
+	return len(neighbours.Intersect(grid).Cells())
 }
 
 // Next Moves to the next state
@@ -43,8 +37,8 @@ func Next(grid *CellSet) *CellSet {
 	// Survivors and current neighbours
 	for _, living := range grid.Cells() {
 		neighbours := neighbours(&living)
-		countLivingNeighbours := countLivingNeighbours(neighbours, grid)
-		if countLivingNeighbours == 2 || countLivingNeighbours == 3 {
+		livingNeighboursCount := countLivingNeighbours(neighbours, grid)
+		if livingNeighboursCount == 2 || livingNeighboursCount == 3 {
 			newGrid.Add(living)
 		}
 		for _, neighbour := range neighbours.Cells() {
