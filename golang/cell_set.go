@@ -37,11 +37,6 @@ func (cs *CellSet) Contains(cell Cell) bool {
 	return found
 }
 
-// Remove a `Cell`
-func (cs *CellSet) Remove(cell Cell) {
-	delete(cs.set, cell)
-}
-
 // Empty returns true is the `CellSet` contains no cell
 func (cs *CellSet) Empty() bool {
 	return len(cs.set) == 0
