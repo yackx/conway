@@ -24,7 +24,7 @@ func main() {
 				Cell{1, 1}, Cell{2, 1}, Cell{3, 1})
 
 		// Glider
-		glider :=  CellSetFrom(
+		glider := CellSetFrom(
 				Cell{1, 0}, Cell{2, 1}, Cell{0, 2},
 				Cell{1, 2}, Cell{2, 2})
 
@@ -36,9 +36,9 @@ func main() {
 	*/
 
 	grid := basic
-	fmt.Println(grid.ToString())
+	fmt.Println(grid)
 	for !grid.Empty() {
 		grid = Next(grid)
-		fmt.Println(grid.ToString())
+		fmt.Println(grid)
 	}
 }

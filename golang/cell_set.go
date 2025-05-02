@@ -70,8 +70,8 @@ func (cs *CellSet) Cells() []Cell {
 	return cells
 }
 
-// ToString representation of this `CellSet`
-func (cs *CellSet) ToString() string {
+// String representation of this `CellSet`
+func (cs *CellSet) String() string {
 	s := "["
 	for cell := range cs.set {
 		s = s + fmt.Sprintf("(%d, %d) ", cell.X, cell.Y)
