@@ -1,4 +1,4 @@
-package conway
+package main
 
 import (
 	"fmt"

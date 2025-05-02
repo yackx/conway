@@ -1,4 +1,4 @@
-package conway
+package main
 
 /*
 A simple Conway's Game of Life in Groovy.

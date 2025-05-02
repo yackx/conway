@@ -1,4 +1,4 @@
-package conway
+package main
 
 // Cell Living cell
 type Cell struct {
