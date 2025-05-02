@@ -1,12 +1,11 @@
 package main
 
 /*
-A simple Conway's Game of Life in Groovy.
-http://en.wikipedia.org/wiki/Conway's_Game_of_Life
+A simple Conway's Game of Life in Go.
 
 No cycle detection. Infinite grid. No GUI.
 
-Copyright (C) 2014 Youri Ackx under GNU General Public License.
+Copyright (C) 2014-2025 Youri Ackx under GNU General Public License.
 See the LICENSE file and [http://www.gnu.org/licenses/].
 */
 

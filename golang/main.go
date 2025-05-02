@@ -1,5 +1,14 @@
 package main
 
+/*
+A simple Conway's Game of Life in Go.
+
+No cycle detection. Infinite grid. No GUI.
+
+Copyright (C) 2014-2025 Youri Ackx under GNU General Public License.
+See the LICENSE file and [http://www.gnu.org/licenses/].
+*/
+
 import (
 	"fmt"
 )
