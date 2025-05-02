@@ -22,44 +22,28 @@ func neighbours(cell *Cell) *CellSet {
 	return n
 }
 
-// Count the living amongst the given neighbours, for the given cell.
-func countLivingNeighbours(neighbours, grid *CellSet) int {
-	return len(neighbours.Intersect(grid).Cells())
-}
-
 // Next Moves to the next state
 func Next(grid *CellSet) *CellSet {
 	newGrid := NewCellSet()
+	candidates := NewCellSet()
 
-	// All neighbours of all living cells. They are all potential newborns.
-	livingCellsNeighbours := NewCellSet()
-
-	// Survivors and current neighbours
+	// Retrieve all cells to check - living cells and theirs neighbours
 	for _, living := range grid.Cells() {
+		candidates.Add(living)
 		neighbours := neighbours(&living)
-		livingNeighboursCount := countLivingNeighbours(neighbours, grid)
-		if livingNeighboursCount == 2 || livingNeighboursCount == 3 {
-			newGrid.Add(living)
-		}
 		for _, neighbour := range neighbours.Cells() {
-			livingCellsNeighbours.Add(neighbour)
+			candidates.Add(neighbour)
 		}
 	}
 
-	// Newborns (starting from all living cells neighbours)
-	for _, candidate := range livingCellsNeighbours.Cells() {
-		found := false
-		for _, cell := range grid.Cells() {
-			if candidate == cell {
-				found = true
-				break
-			}
-		}
-		if !found {
-			countLivingNeighbours := countLivingNeighbours(neighbours(&candidate), grid)
-			if countLivingNeighbours == 3 {
-				newGrid.Add(candidate)
-			}
+	// Check each candidate against the game's rules
+	for _, cell := range candidates.Cells() {
+		livingNeighboursCount := len(neighbours(&cell).Intersect(grid).Cells())
+		isAlive := grid.Contains(cell)
+
+		if (isAlive && (livingNeighboursCount == 2 || livingNeighboursCount == 3)) ||
+			(!isAlive && livingNeighboursCount == 3) {
+			newGrid.Add(cell)
 		}
 	}
 
