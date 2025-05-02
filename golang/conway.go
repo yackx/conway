@@ -26,10 +26,8 @@ func neighbours(cell *Cell) *CellSet {
 func countLivingNeighbours(neighbours, grid *CellSet) int {
 	intersect := 0
 	for _, neighbour := range neighbours.Cells() {
-		for _, cell := range grid.Cells() {
-			if neighbour == cell {
-				intersect++
-			}
+		if grid.Contains(neighbour) {
+			intersect++
 		}
 	}
 	return intersect
