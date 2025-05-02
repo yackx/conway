@@ -12,8 +12,9 @@ See the LICENSE file and [http://www.gnu.org/licenses/].
 // Return all the neighbours of the given cell, living or not.
 func neighbours(cell *Cell) *CellSet {
 	n := NewCellSet()
-	for i := -1; i <= 1; i++ {
-		for j := -1; j <= 1; j++ {
+	delta := []int{-1, 0, 1}
+	for _, i := range delta {
+		for _, j := range delta {
 			if i != 0 || j != 0 {
 				n.Add(Cell{i + cell.X, j + cell.Y})
 			}
